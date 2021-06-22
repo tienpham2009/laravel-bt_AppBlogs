@@ -16,12 +16,13 @@ class PostRepo
         $post->teaser = $request->input('teaser');
         $post->content = $request->input('content');
         $post->created = Carbon::now();
+        $post->	category_id = $request->input('category_id');
         $post->save();
     }
 
     function index()
     {
-        return Post::all();
+        return Post::with('category')->get();
     }
 
     function getById($id)
@@ -36,6 +37,7 @@ class PostRepo
         $blog->teaser = $request->input('teaser');
         $blog->content = $request->input('content');
         $blog->created = $request->input('dateCreate');
+        $blog->category_id = $request->input('category_id');
 
         $blog->save();
     }

@@ -21,6 +21,14 @@
         <input type="date" name="dateCreate" class="form-control" value="{{ $blog->created }}"/>
     </div>
     <div class="form-group">
+        <label>Category</label>
+        <select name="category_id" class="form-control col-2">
+            @foreach($categorys as $category)
+                <option value="{{ $category->id }}">{{ $category->name }}</option>
+            @endforeach
+        </select>
+    </div>
+    <div class="form-group">
         <input type="submit" value="Update" class="btn btn-primary"/>
         <a href="index.php" class="btn btn-default">Cancel</a>
     </div>

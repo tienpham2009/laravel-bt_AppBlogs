@@ -5,3 +5,8 @@
 <p>Teaser: {{$blog->teaser}}</p>
 <p>Content: {{$blog->content}}</p>
 <p>created: {{$blog->created}}</p>
+@if($blog->category)
+    <p>created: {{$blog->category->name}}</p>
+@else
+    <p>chua co danh muc</p>
+@endif

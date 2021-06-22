@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Repository\CateRepo;
 use App\Repository\PostRepo;
 use Illuminate\Http\Request;
 
@@ -16,7 +18,8 @@ class PostController extends Controller
 
     function create()
     {
-        return view('blogs.create');
+        $categorys = Category::all();
+        return view('blogs.create' , compact('categorys'));
     }
 
     function store(Request $request)
@@ -33,8 +36,9 @@ class PostController extends Controller
 
     function edit($id)
     {
+        $categorys = Category::all();
         $blog = $this->postRePo->getById($id);
-        return view('blogs.update' , compact('blog'));
+        return view('blogs.update' , compact('blog' , 'categorys'));
     }
 
     function update(Request $request , $id)
